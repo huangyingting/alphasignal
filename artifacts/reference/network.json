@@ -1,0 +1,14 @@
+[
+  [
+    "GET /api/auth/session",
+    200
+  ],
+  [
+    "GET /api/auth/csrf",
+    200
+  ],
+  [
+    "POST /api/auth/session",
+    200
+  ]
+]

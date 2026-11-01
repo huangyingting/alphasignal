@@ -1,0 +1,376 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum UserRole {
+  ADMIN
+  OPERATOR
+  MEMBER
+  VIEWER
+}
+
+enum AccountAdmissionSource {
+  INVITATION
+  BOOTSTRAP
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                  String                 @id @default(cuid())
+  name                String?
+  username            String?                @unique
+  email               String?                @unique
+  emailVerified       DateTime?
+  image               String?
+  bio                 String?
+  websiteUrl          String?
+  githubHandle        String?
+  twitterHandle       String?
+  role                UserRole               @default(MEMBER)
+  admissionSource     AccountAdmissionSource @default(INVITATION)
+  invitedAt           DateTime?
+  admittedAt          DateTime?
+  disabledAt          DateTime?
+  sessionInvalidAfter DateTime?
+
+  accounts            Account[]
+  sessions            Session[]
+  passwordCredential  PasswordCredential?
+  passwordResetTokens PasswordResetToken[]
+  createdInvitations  AccountInvitation[]    @relation("InvitationCreator")
+  revokedInvitations  AccountInvitation[]    @relation("InvitationRevoker")
+  acceptedInvitation  AccountInvitation?     @relation("InvitationAcceptor")
+  auditLogsActed      AuditLog[]             @relation("AuditActor")
+  auditLogsTargeted   AuditLog[]             @relation("AuditTargetUser")
+
+  customFeeds         CustomFeed[]
+  bookmarks           Bookmark[]
+  upvotes             SignalUpvote[]
+  comments            Comment[]
+  commentUpvotes      CommentUpvote[]
+  notifications       Notification[]
+  emailPreference     EmailPreference?
+  submittedSignals    Signal[]               @relation("SignalSubmitter")
+
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}
+
+model PasswordCredential {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  passwordHash String
+  algorithm    String   @default("scrypt-v1")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+}
+
+model AccountInvitation {
+  id               String    @id @default(cuid())
+  email            String
+  normalizedEmail  String
+  role             UserRole  @default(MEMBER)
+  tokenHash        String    @unique
+  expiresAt        DateTime
+  acceptedAt       DateTime?
+  revokedAt        DateTime?
+  createdByUserId  String?
+  revokedByUserId  String?
+  acceptedByUserId String?   @unique
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  createdByUser    User?     @relation("InvitationCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  revokedByUser    User?     @relation("InvitationRevoker", fields: [revokedByUserId], references: [id], onDelete: SetNull)
+  acceptedByUser   User?     @relation("InvitationAcceptor", fields: [acceptedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([normalizedEmail, expiresAt])
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  action       String
+  actorUserId  String?
+  targetUserId String?
+  entityType   String
+  entityId     String?
+  ipAddress    String?
+  metadataJson String   @default("{}")
+  createdAt    DateTime @default(now())
+
+  actorUser    User?    @relation("AuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  targetUser   User?    @relation("AuditTargetUser", fields: [targetUserId], references: [id], onDelete: SetNull)
+
+  @@index([action, createdAt])
+  @@index([actorUserId, createdAt])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Topic {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  name        String
+  description String?
+  subtopics   Subtopic[]
+  signals     SignalTopic[]
+  createdAt   DateTime      @default(now())
+}
+
+model Subtopic {
+  id        String        @id @default(cuid())
+  slug      String
+  name      String
+  topicId   String
+  topic     Topic         @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  signals   SignalTopic[]
+
+  @@unique([topicId, slug])
+}
+
+model Company {
+  id          String          @id @default(cuid())
+  slug        String          @unique
+  name        String
+  domain      String?
+  description String?
+  signals     SignalCompany[]
+  createdAt   DateTime        @default(now())
+}
+
+model Signal {
+  id              String          @id @default(cuid())
+  slug            String          @unique
+  title           String
+  summary         String
+  whatHappened    String
+  whyItMatters    String
+  keyInsightsJson String          @default("[]")
+  category        String          @default("Top News")
+  sourceType      String          @default("news")
+  sourceName      String
+  originalUrl     String
+  externalId      String?         @unique
+  metricsLabel    String?
+  metricsValue    Int             @default(0)
+  authorName      String?
+  authorHandle    String?
+  publishedAt     DateTime        @default(now())
+  submittedById   String?
+  submittedBy     User?           @relation("SignalSubmitter", fields: [submittedById], references: [id], onDelete: SetNull)
+
+  topics          SignalTopic[]
+  companies       SignalCompany[]
+  upvotes         SignalUpvote[]
+  bookmarks       Bookmark[]
+  comments        Comment[]
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@index([publishedAt])
+  @@index([category, publishedAt])
+}
+
+model SignalTopic {
+  id         String    @id @default(cuid())
+  signalId   String
+  topicId    String
+  subtopicId String?
+
+  signal     Signal    @relation(fields: [signalId], references: [id], onDelete: Cascade)
+  topic      Topic     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  subtopic   Subtopic? @relation(fields: [subtopicId], references: [id], onDelete: SetNull)
+
+  @@unique([signalId, topicId, subtopicId])
+  @@index([topicId])
+}
+
+model SignalCompany {
+  id        String  @id @default(cuid())
+  signalId  String
+  companyId String
+
+  signal    Signal  @relation(fields: [signalId], references: [id], onDelete: Cascade)
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([signalId, companyId])
+  @@index([companyId])
+}
+
+model CustomFeed {
+  id        String             @id @default(cuid())
+  userId    String
+  name      String
+  slug      String
+  isDefault Boolean            @default(false)
+  sortOrder Int                @default(0)
+  filters   CustomFeedFilter[]
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  @@unique([userId, slug])
+  @@index([userId, sortOrder])
+}
+
+model CustomFeedFilter {
+  id         String     @id @default(cuid())
+  feedId     String
+  filterType String
+  mode       String     @default("INCLUDE")
+  value      String
+  feed       CustomFeed @relation(fields: [feedId], references: [id], onDelete: Cascade)
+
+  @@index([feedId])
+}
+
+model SignalUpvote {
+  id        String   @id @default(cuid())
+  userId    String
+  signalId  String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  signal    Signal   @relation(fields: [signalId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, signalId])
+  @@index([signalId])
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  signalId  String
+  folder    String   @default("default")
+  note      String?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  signal    Signal   @relation(fields: [signalId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, signalId])
+  @@index([userId, createdAt])
+}
+
+model Comment {
+  id        String          @id @default(cuid())
+  signalId  String
+  userId    String
+  parentId  String?
+  body      String
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  signal    Signal          @relation(fields: [signalId], references: [id], onDelete: Cascade)
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent    Comment?        @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[]       @relation("CommentReplies")
+  upvotes   CommentUpvote[]
+
+  @@index([signalId, createdAt])
+}
+
+model CommentUpvote {
+  id        String   @id @default(cuid())
+  userId    String
+  signalId  String?
+  commentId String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, commentId])
+  @@index([commentId])
+}
+
+model Notification {
+  id        String    @id @default(cuid())
+  userId    String
+  title     String
+  body      String
+  href      String?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model EmailReport {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  subject     String
+  editionDate DateTime
+  summary     String
+  htmlContent String
+  signalIds   String   @default("[]")
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([editionDate])
+}
+
+model EmailPreference {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  dailyDigest     Boolean  @default(true)
+  weeklyTopPapers Boolean  @default(true)
+  productAlerts   Boolean  @default(false)
+  timezone        String   @default("UTC")
+  deliveryHour    Int      @default(13)
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

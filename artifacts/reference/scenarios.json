@@ -1,0 +1,651 @@
+[
+  {
+    "name": "30-cookie-preferences",
+    "error": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Preferences', exact: true }) resolved to 2 elements:"
+  },
+  {
+    "name": "31-search-results",
+    "path": "/",
+    "headings": [
+      "Last week in AI",
+      "OpenAI's GPT-6.1 Terra Cuts Agent Costs 50% and Runs 3x Faster",
+      "Backplane Lets AI Agents Directly Edit PCB and CAD Hardware Designs",
+      "Google DeepMind's Genie 4 Builds Interactive Worlds With a Gemini Planner",
+      "Anthropic Ships Claude to CarPlay, Adding Voice Mode and 33 Languages"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search companies, topics, and articles…",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "TRAINING_INFRA9",
+      "VIBE_CODING8",
+      "VIDEO9",
+      "FOR YOU",
+      "LATEST",
+      "UPVOTES",
+      "Create a new feed",
+      "LAST WEEK",
+      "List view",
+      "Grid view",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "32-search-empty",
+    "path": "/",
+    "headings": [
+      "Last week in AI",
+      "OpenAI's GPT-6.1 Terra Cuts Agent Costs 50% and Runs 3x Faster",
+      "Backplane Lets AI Agents Directly Edit PCB and CAD Hardware Designs",
+      "Google DeepMind's Genie 4 Builds Interactive Worlds With a Gemini Planner",
+      "Anthropic Ships Claude to CarPlay, Adding Voice Mode and 33 Languages"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Search companies, topics, and articles…",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "TRAINING_INFRA9",
+      "VIBE_CODING8",
+      "VIDEO9",
+      "FOR YOU",
+      "LATEST",
+      "UPVOTES",
+      "Create a new feed",
+      "LAST WEEK",
+      "List view",
+      "Grid view",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "33-bookmark-action",
+    "path": "/",
+    "headings": [
+      "Last week in AI",
+      "OpenAI's GPT-6.1 Terra Cuts Agent Costs 50% and Runs 3x Faster",
+      "Backplane Lets AI Agents Directly Edit PCB and CAD Hardware Designs",
+      "Google DeepMind's Genie 4 Builds Interactive Worlds With a Gemini Planner",
+      "Anthropic Ships Claude to CarPlay, Adding Voice Mode and 33 Languages"
+    ],
+    "inputs": [],
+    "controls": [
+      "VIBE_CODING8",
+      "VIDEO9",
+      "FOR YOU",
+      "LATEST",
+      "UPVOTES",
+      "Create a new feed",
+      "LAST WEEK",
+      "List view",
+      "Grid view",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upvote",
+      "Bookmark",
+      "Upgrade",
+      "+Create new list"
+    ]
+  },
+  {
+    "name": "33-bookmark-roundtrip",
+    "note": "Action opened selection UI; no confirmed persistent mutation."
+  },
+  {
+    "name": "36-settings-personalization",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Import Preferences",
+      "Followed Companies · 0",
+      "Followed Topics · 21",
+      "Followed Subtopics · 0"
+    ],
+    "inputs": [
+      {
+        "type": "textarea",
+        "placeholder": "I work on RAG systems with Python and PyTorch. Mostly focused on retrieval quality and eval frameworks.",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Search companies...",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Search subtopics...",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Connect",
+      "Connect",
+      "Sync",
+      "AGENTS×",
+      "API×",
+      "AUDIO×",
+      "BENCHMARKS×",
+      "BUSINESS×",
+      "DATA×",
+      "DEVELOPMENT×",
+      "GOVERNMENT×",
+      "GPUS×",
+      "IMAGE×",
+      "INFRA×",
+      "LLMS×",
+      "OPEN SOURCE×",
+      "POST TRAINING×",
+      "REASONING×",
+      "RETRIEVAL×",
+      "ROBOTICS×",
+      "SECURITY×",
+      "TRAINING INFRA×",
+      "VIBE CODING×",
+      "VIDEO×",
+      "News×",
+      "Papers+",
+      "Models+",
+      "Repos+",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "36-settings-subscription",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Subscription",
+      "Get Pro for $0 out of pocket",
+      "AlphaSignal Team",
+      "Product"
+    ],
+    "inputs": [],
+    "controls": [
+      "Preferences",
+      "Accept",
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Compare plans",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "36-settings-perks",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Perks",
+      "Product",
+      "Resources",
+      "Company"
+    ],
+    "inputs": [],
+    "controls": [
+      "Preferences",
+      "Accept",
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Upgrade",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "36-settings-general",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Profile",
+      "Invitations",
+      "Product",
+      "Resources"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Enter your first name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your last name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your username",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "Enter your email",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "colleague@company.com",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "Preferences",
+      "Accept",
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Change",
+      "Delete",
+      "SendSending",
+      "Copy",
+      "Integrations",
+      "Newsletter",
+      "Role",
+      "Data & account",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "37-settings-integrations",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Profile",
+      "Invitations",
+      "Product",
+      "Resources"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Enter your first name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your last name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your username",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "Enter your email",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "colleague@company.com",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "Preferences",
+      "Accept",
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Change",
+      "Delete",
+      "SendSending",
+      "Copy",
+      "Integrations",
+      "Enable",
+      "Connect",
+      "Connect",
+      "Newsletter",
+      "Role",
+      "Data & account",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "37-settings-newsletter",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Profile",
+      "Invitations",
+      "Product",
+      "Resources"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Enter your first name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your last name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your username",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "Enter your email",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "colleague@company.com",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": null,
+        "name": ""
+      }
+    ],
+    "controls": [
+      "Preferences",
+      "Accept",
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Change",
+      "Delete",
+      "SendSending",
+      "Copy",
+      "Integrations",
+      "Enable",
+      "Connect",
+      "Connect",
+      "Newsletter",
+      "Receive the AlphaSignal newsletter by email.",
+      "Role",
+      "Data & account",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "37-settings-role",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Profile",
+      "Invitations",
+      "Product",
+      "Resources"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Enter your first name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your last name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your username",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "Enter your email",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "colleague@company.com",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": null,
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Microsoft",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Change",
+      "Delete",
+      "SendSending",
+      "Copy",
+      "Integrations",
+      "Enable",
+      "Connect",
+      "Connect",
+      "Newsletter",
+      "Receive the AlphaSignal newsletter by email.",
+      "Role",
+      "Developer",
+      "Employee",
+      "Data & account",
+      "Upgrade"
+    ]
+  },
+  {
+    "name": "37-settings-data-account",
+    "path": "/settings",
+    "headings": [
+      "Settings",
+      "Profile",
+      "Invitations",
+      "Product",
+      "Resources"
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "placeholder": "Enter your first name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your last name",
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter your username",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "Enter your email",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": "colleague@company.com",
+        "name": ""
+      },
+      {
+        "type": "email",
+        "placeholder": null,
+        "name": ""
+      },
+      {
+        "type": "text",
+        "placeholder": "Microsoft",
+        "name": ""
+      }
+    ],
+    "controls": [
+      "Trial — 14 days left",
+      "Search (Control-K)",
+      "Account",
+      "Membership",
+      "Sign out",
+      "Close menu",
+      "Search",
+      "Account",
+      "GENERAL",
+      "PERSONALIZATION",
+      "SUBSCRIPTION",
+      "PERKS",
+      "Change",
+      "Delete",
+      "SendSending",
+      "Copy",
+      "Integrations",
+      "Enable",
+      "Connect",
+      "Connect",
+      "Newsletter",
+      "Receive the AlphaSignal newsletter by email.",
+      "Role",
+      "Developer",
+      "Employee",
+      "Data & account",
+      "Export",
+      "Delete",
+      "Upgrade"
+    ]
+  }
+]
